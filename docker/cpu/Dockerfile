@@ -41,6 +41,9 @@ RUN curl -L -o voices.tar.gz https://github.com/remsky/Kokoro-FastAPI/releases/d
 # Switch back to app directory
 WORKDIR /app
 
+# Copy project files
+COPY --chown=appuser:appuser api ./api
+
 # Copy dependency files
 COPY --chown=appuser:appuser pyproject.toml ./pyproject.toml
 
@@ -51,7 +54,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 
 # Copy project files
 #COPY --chown=appuser:appuser api ./api
-COPY api ./api
+#COPY api ./api
 
 # Install project
 RUN --mount=type=cache,target=/root/.cache/uv \
