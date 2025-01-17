@@ -49,11 +49,9 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     uv venv && \
     uv sync --extra cpu --no-install-project
 
-# Switch to app directory
-WORKDIR /app
-
 # Copy project files
-COPY --chown=appuser:appuser api ./api
+#COPY --chown=appuser:appuser api ./api
+COPY api ./api
 
 # Install project
 RUN --mount=type=cache,target=/root/.cache/uv \
